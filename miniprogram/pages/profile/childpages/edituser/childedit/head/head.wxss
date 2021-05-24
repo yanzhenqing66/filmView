@@ -1,0 +1,15 @@
+.info-btn{
+  margin: 20rpx auto;
+}
+
+.user-photo {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.chooseImgBtn {
+  margin: 20rpx auto;
+}

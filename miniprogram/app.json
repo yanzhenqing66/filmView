@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/tour/tour",
+    "pages/like/like",
+    "pages/profile/profile",
+    "pages/profile/childpages/person/person",
+    "pages/profile/childpages/edituser/editUserInfo",
+    "pages/profile/childpages/edituser/childedit/head/head",
+    "pages/profile/childpages/edituser/childedit/username/username",
+    "pages/profile/childpages/edituser/childedit/gender/gender",
+    "pages/profile/childpages/edituser/childedit/signature/signature",
+    "pages/profile/childpages/edituser/childedit/weixin/weixin",
+    "pages/home/detail/detail"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2E963D",
+    "navigationBarTitleText": "简影视界",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "iconPath": "./images/tabbar/movie.png",
+        "selectedIconPath": "./images/tabbar/moviec.png",
+        "pagePath": "pages/home/home",
+        "text": "电影"
+      },
+      {
+        "iconPath": "./images/tabbar/world.png",
+        "selectedIconPath": "./images/tabbar/worldc.png",
+        "pagePath": "pages/tour/tour",
+        "text": "视界"
+      },
+      {
+        "iconPath": "./images/tabbar/like.png",
+        "selectedIconPath": "./images/tabbar/likec.png",
+        "pagePath": "pages/like/like",
+        "text": "喜欢"
+      },
+      {
+        "iconPath": "./images/tabbar/profile.png",
+        "selectedIconPath": "./images/tabbar/profilec.png",
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

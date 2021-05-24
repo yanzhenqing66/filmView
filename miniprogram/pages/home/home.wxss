@@ -1,0 +1,51 @@
+.conSwiper {
+  height: 500rpx;
+}
+
+.hotTitle {
+  position: relative;
+  background-color: #eef0f0;
+  background: url(http://nsedu.oss-cn-beijing.aliyuncs.com/nsedu-m/2020-index/title-bg.png) no-repeat 30rpx center;
+  background-size: contain;
+}
+
+.hotTitle .hotCon {
+  margin-left: 30rpx;
+  font-size: 50rpx;
+  line-height: 150rpx;
+  font-weight: 550;
+  color: #2E963D;
+}
+
+.hotTitle .hotCon::before {
+  width: 10rpx;
+  height: 40rpx;
+  background: #2E963D;
+  display: inline-block;
+  content: "";
+  position: absolute;
+  top: 58rpx;
+  left: 10rpx;
+}
+
+.index-tab {
+  width: 700rpx;
+  margin: 0 auto;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.index-tab .act {
+  flex: 1;
+  text-align: center;
+  margin: 0 80rpx;
+  padding: 20rpx;
+  padding: 20rpx;
+}
+
+.index-tab .active{
+  color: #2E963D;
+  border-bottom: 5rpx solid #2E963D;
+}

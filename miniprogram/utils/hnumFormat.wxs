@@ -1,0 +1,7 @@
+var hnumFormat = function(num) {
+  if(num >= 1000) {
+    num = (num/1000).toFixed(1) + 'k';
+  }
+  return num;
+}
+module.exports.hnumFormat = hnumFormat;

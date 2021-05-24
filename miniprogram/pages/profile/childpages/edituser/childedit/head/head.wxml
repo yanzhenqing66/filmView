@@ -1,0 +1,6 @@
+<view class="head">
+	<button class="info-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">使用微信头像</button>
+  <image class="user-photo" src="{{userPhoto}}"></image>
+  <button class="chooseImgBtn" bindtap="handleUploadImg">选择图片</button>
+  <button type="primary" bindtap="handlePhoto">上传使用头像</button>
+</view>

@@ -1,0 +1,15 @@
+<view class='bannerWrap'>
+	<swiper class='bannerSwiper' 
+		previous-margin="54rpx" next-margin='54rpx' 
+		indicator-dots="true" indicator-color='#B5B5B5'
+		indicator-active-color='#fff' interval='3000' 
+		duration='500' interval="2000" autoplay="true" circular='true' 
+		bindchange="bindchange">
+		<block wx:for="{{banner}}" wx:key="index">
+			<swiper-item>
+				<image class="{{index==xindex?'imageBanner':'imageBanner_small'}}" 
+				src="{{item.pic}}"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+</view>

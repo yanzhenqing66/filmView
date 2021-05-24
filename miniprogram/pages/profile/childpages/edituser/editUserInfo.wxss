@@ -1,0 +1,17 @@
+.edit-info-item {
+  height: 100rpx;
+  font-size: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 20rpx;
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #cdcdcd;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.edit-info-item .aright {
+  width: 50rpx;
+  height: 50rpx;
+}

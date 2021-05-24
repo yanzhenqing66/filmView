@@ -1,0 +1,27 @@
+<view class="page" data-weui-theme="{{detailInfo}}">
+	<view class="page__bd">
+		<view class="weui-article">
+			<view class="weui-article__h1">走进电影</view>
+			<view class="weui-article__section">
+				<view class="weui-article__h2">{{detailInfo.film_name}}</view>
+				<view class="weui-article__section">
+					<view class="weui-article__h3">简介</view>
+					<view class="weui-article__p">
+						{{detailInfo.content}}
+					</view>
+					<view class="weui-article__p">
+						<image class="weui-article__img" src="{{detailInfo.img1}}" mode="aspectFit" style="height: 180px" />
+						
+					</view>
+				</view>
+				<view class="weui-article__section">
+					<view class="weui-article__h3">热评</view>
+					<view class="weui-article__p">
+              {{detailInfo.hot_comment}}
+            <image class="weui-article__img hotImg" src="{{detailInfo.img2}}" mode="aspectFit" style="height: 180px" />
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

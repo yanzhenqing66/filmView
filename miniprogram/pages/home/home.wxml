@@ -1,0 +1,17 @@
+
+<Swiper class="conSwiper" banner="{{banner}}"></Swiper>
+
+<view class="hotTitle">
+	<view class="hotCon">热门推荐</view>
+</view>
+
+<view class="index-tab">
+	<view class="{{ current == 'time' ? 'active' : '' }} act" data-current="time" bindtap="handleCurrent">最新</view>
+	<view class="{{ current == 'heart_num' ? 'active' : '' }} act" data-current="heart_num" bindtap="handleCurrent">推荐</view>
+</view>
+
+<Layout filmsInfo="{{filmsInfo}}" bind:heartUpd = "handleHeart" bind:enterDetail="handleDetail" />
+
+<Footer />
+
+<back-top wx:if="{{showBacktop}}" />

@@ -1,0 +1,3 @@
+<view class="back-top"  bindtap="handleBacktop">
+  <image class="backImg" src="/images/backtop.png"></image>
+</view>

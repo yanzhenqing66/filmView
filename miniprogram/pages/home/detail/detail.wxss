@@ -1,0 +1,27 @@
+@import '../../../style/weui/weui-article.wxss';
+
+.page {
+  background-color: #eef0f0;
+}
+.weui-article__h1 {
+  font-size: 70rpx;
+  color: #2E963D;
+}
+
+.weui-article__h2 {
+  font-size: 55rpx;
+}
+
+.weui-article__h3 {
+  font-size: 40rpx;
+}
+
+.hotImg {
+  display: block;
+  margin-top: 15px;
+}
+
+.weui-article__p {
+  font-size: 35rpx;
+  line-height: 70rpx;
+}

@@ -1,0 +1,7 @@
+.footer {
+  font-size: 25rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #EEF0F0;
+  color: #aaa;
+}

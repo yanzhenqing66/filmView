@@ -1,0 +1,6 @@
+.signature-input {
+  margin: 20rpx 20rpx;
+  height: 350rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+}

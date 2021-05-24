@@ -1,0 +1,60 @@
+
+.user-info {
+  margin: 20rpx 20rpx;
+  height: 160rpx;
+  background-color: #fff;
+  border: 1rpx solid #ccc;
+  box-shadow: 0 1rpx 5rpx #ccc;
+  border-radius: 20rpx;
+  display: flex; 
+  align-items: center;
+  padding: 20px;
+}
+
+.info-photo {
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.info-name {
+  display: block;
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+  font-size: 35rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.info-signature {
+  display: block;
+  margin-left: 30rpx;
+  color: #666;
+  font-size: 28rpx;
+  /*只显示1行  */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.user-list-item {
+  height: 100rpx;
+  font-size: 35rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 20rpx;
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #cdcdcd;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.user-list-item .aright {
+  width: 50rpx;
+  height: 50rpx;
+}

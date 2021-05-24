@@ -1,0 +1,6 @@
+.name-input {
+  margin: 20rpx 20rpx;
+  height: 80rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+}

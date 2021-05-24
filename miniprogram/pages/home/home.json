@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "Swiper": "../../components/content/swiper/Swiper",
+    "Footer": "../../components/common/footer/Footer",
+    "Layout": "../../components/content/layout/Layout",
+    "back-top": "../../components/common/backtop/back-top"
+  }
+}

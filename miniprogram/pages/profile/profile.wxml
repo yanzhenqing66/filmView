@@ -1,0 +1,30 @@
+<view class="user">
+
+	<view class="user-info">
+		<image class="info-photo" mode="widthFix" src="{{userPhoto}}"></image>
+		<view wx:if="{{logged}}" class="info-item">
+      <text class="info-name">{{userName}}</text>
+      <text class="info-signature">个性签名：{{signature}}</text>
+    </view>
+		<button wx:else disabled="{{disabled}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+	</view>
+
+  <view wx:if="{{logged}}" class="user-list">
+   <navigator url="./childpages/person/person" open-type="navigate"
+   hover-class="navigator-hover">
+    <view class="user-list-item">
+      <text>个人主页</text>
+      <image class="aright" src="../../images/profile/arrowright.svg"></image>
+    </view>
+   </navigator>
+    <navigator url="./childpages/edituser/editUserInfo" open-type="navigate"
+   hover-class="navigator-hover">
+    <view class="user-list-item">
+      <text>编辑个人信息</text>
+      <image class="aright" src="../../images/profile/arrowright.svg"></image>
+    </view>
+   </navigator>
+  </view>
+
+
+</view>

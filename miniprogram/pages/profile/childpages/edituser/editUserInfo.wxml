@@ -1,0 +1,37 @@
+<view class="edit-info">
+ <navigator url="./childedit/head/head" open-type="navigate"
+   hover-class="navigator-hover">
+    <view class="edit-info-item">
+      <text>头像</text>
+      <image class="aright" src="/images/profile/arrowright.svg"></image>
+    </view>
+   </navigator>
+    <navigator url="./childedit/username/username" open-type="navigate"
+   hover-class="navigator-hover">
+    <view class="edit-info-item">
+      <text>昵称</text>
+      <image class="aright" src="/images/profile/arrowright.svg"></image>
+    </view>
+   </navigator>
+   <navigator url="./childedit/gender/gender" open-type="navigate"
+   hover-class="navigator-hover">
+    <view class="edit-info-item">
+      <text>性别</text>
+      <image class="aright" src="/images/profile/arrowright.svg"></image>
+    </view>
+   </navigator>
+   <navigator url="./childedit/signature/signature" open-type="navigate"
+   hover-class="navigator-hover">
+    <view class="edit-info-item">
+      <text>个性签名</text>
+      <image class="aright" src="/images/profile/arrowright.svg"></image>
+    </view>
+   </navigator>
+   <navigator url="./childedit/weixin/weixin" open-type="navigate"
+   hover-class="navigator-hover">
+    <view class="edit-info-item">
+      <text>微信号</text><text style="color:red; font-size: 20rpx; margin-right: 400rpx; margin-top: 10rpx ">(仅好友可见)</text>
+      <image class="aright" src="/images/profile/arrowright.svg"></image>
+    </view>
+   </navigator>
+</view>

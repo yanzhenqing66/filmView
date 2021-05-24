@@ -1,0 +1,34 @@
+<wxs src="../../../utils/hnumFormat.wxs" module="h1" />
+
+<view class="content-bg">
+  <view class="content">
+    <view class="left">
+      <view wx:for="{{filmsInfo}}" wx:key="_id">
+        <template is="template" wx:if="{{index%2==0}}" data="{{...item}}" />
+      </view>
+    </view>
+
+    <view class="right">
+      <view wx:for="{{filmsInfo}}" wx:key="_id">
+        <template is="template" wx:if="{{index%2==1}}" data="{{...item}}" />
+      </view>
+    </view>
+  </view>
+</view>
+
+<template name="template">
+  <view class="item">
+    <view bindtap="handleDetail" data-id="{{_id}}">
+      <image class="item-img" src="{{imgUrl}}" mode="widthFix" lazy-load="true" show-menu-by-longpress="true"></image>
+      <view class="item-title">{{film_name}}</view>
+      <text class='description'>{{title}}</text>
+    </view>
+    <view class="author-view">
+      <view class="heart" data-id="{{_id}}" bindtap="handleHeart" >
+        <image class="avatar" src="/images/home/like.svg"></image>
+        <text class="author-name">{{h1.hnumFormat(heart_num)}}</text>
+      </view>
+      <text class="time">{{time}}</text>
+    </view>
+  </view>
+</template>
