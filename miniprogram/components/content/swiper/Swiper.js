@@ -6,7 +6,7 @@ Component({
   properties: {
     'banner':{
       type: Array,
-      value: 'default value'
+      value: []
     }
   },
 

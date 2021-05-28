@@ -1,27 +1,22 @@
-
-const db = wx.cloud.database()
+import {
+  getFilmDetail
+} from '../../../api/home'
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     detailInfo: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    let filmID = options.filmID
-    db.collection('films_topic').doc(filmID)
-    .get()
-    .then(res => { 
-      this.setData({        
-        detailInfo: res.data
+    const filmId = options.filmId
+    getFilmDetail({
+        _id: filmId
       })
-    })
+      .then(res => {
+        this.setData({
+          detailInfo: res.data[0]
+        })
+      })
   },
 
   /**

@@ -1,6 +1,6 @@
 @import '../../../style/weui/weui-article.wxss';
 
-.page {
+.detail {
   background-color: #eef0f0;
 }
 .weui-article__h1 {
@@ -18,7 +18,6 @@
 
 .hotImg {
   display: block;
-  margin-top: 15px;
 }
 
 .weui-article__p {

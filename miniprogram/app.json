@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/home/detail/detail",
     "pages/tour/tour",
     "pages/like/like",
     "pages/profile/profile",
@@ -10,8 +11,7 @@
     "pages/profile/childpages/edituser/childedit/username/username",
     "pages/profile/childpages/edituser/childedit/gender/gender",
     "pages/profile/childpages/edituser/childedit/signature/signature",
-    "pages/profile/childpages/edituser/childedit/weixin/weixin",
-    "pages/home/detail/detail"
+    "pages/profile/childpages/edituser/childedit/weixin/weixin"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,9 +1,13 @@
+import {
+  getFilms,
+  getSwipers,
+  uptHeartNum
+} from '../../api/home'
+
 const db = wx.cloud.database()
+const _ = db.command
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     banner: [],
     filmsInfo: [],
@@ -11,47 +15,49 @@ Page({
     userInfo: [],
     current: 'time'
   },
-  // 获取首页轮播图图片
-  getLunbo() {
-    wx.cloud.callFunction({
-      name: 'getSwiper'
-    }).then(res => {
+
+  getSwipers() {
+    getSwipers().then(res => {
       this.setData({
-        banner: res.result.data
+        banner: res.data
       })
     })
   },
 
-  //获取电影列表数据
-  getFilms() {
-   wx.cloud.callFunction({
-     name: 'getFilms',
-     data: {
-      current: this.data.current
-     }
-   }).then(res => {
-     this.setData({
-       filmsInfo: res.result.data
-     })
-   })
+  handleCurrent(e) {
+    let current = e.target.dataset.current
+    if (current == this.data.current) {
+      return false
+    }
+    this.setData({
+      current
+    }, () => {
+      this.getFilms();
+    })
   },
+
+  getFilms() {
+    getFilms(this.data.current)
+      .then(res => {
+        this.setData({
+          filmsInfo: res.data
+        })
+      })
+  },
+
   // 获取首页点击喜欢 更新 数据
-  handleHeart(event) {
+  heartUpd(event) {
     let id = event.detail.id
-    wx.cloud.callFunction({
-      name: 'update',
-      data: {
-        collection: 'films_topic',
-        doc: id,
-        data: `{
-          heart_num: _.inc(1)
-        }`
-      }
-    }).then(res => {
-      let cloneflimsInfo = [...this.data.filmsInfo]
-      for(let i = 0; i < cloneflimsInfo.length; i++) {
-        if(cloneflimsInfo[i]._id == id) {
-          cloneflimsInfo[i].heart_num ++
+    const data = {
+      heart_num: _.inc(1)
+    }
+    uptHeartNum({
+      _id: id
+    }, data).then(res => {
+      const cloneflimsInfo = [...this.data.filmsInfo]
+      for (let i = 0; i < cloneflimsInfo.length; i++) {
+        if (cloneflimsInfo[i]._id === id) {
+          cloneflimsInfo[i].heart_num++
         }
       }
       this.setData({
@@ -60,14 +66,13 @@ Page({
     })
   },
 
-  // 获取详情页数据
-  handleDetail(event) {
+  goDetail(event) {
     let id = event.detail.id
     wx.navigateTo({
-      url: './detail/detail?filmID=' + id,
+      url: 'detail/detail?filmId=' + id,
     })
   },
- 
+
   // 获取用户信息
   getUsers() {
     db.collection('users').field({
@@ -84,8 +89,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getLunbo();
-    this.getFilms(); 
+    this.getSwipers();
+    this.getFilms();
   },
 
   /**
@@ -94,11 +99,8 @@ Page({
    */
   onPageScroll(options) {
     const scrollTop = options.scrollTop;
-
     const flag = scrollTop >= 800;
-
-    if(flag != this.data.showBacktop) {
-
+    if (flag !== this.data.showBacktop) {
       this.setData({
         showBacktop: flag
       })
@@ -153,16 +155,5 @@ Page({
   onShareAppMessage: function () {
 
   },
-  handleCurrent(e) {
-    let current = e.target.dataset.current
-    if(current == this.data.current) {
-      return false
-    }
-    this.setData({
-      current
-    }, () => {
-      this.getFilms();
-    })
-  }
-  
+
 })

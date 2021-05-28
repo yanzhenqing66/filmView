@@ -1,0 +1,10 @@
+var util = {}
+
+util.formatNum = function(num) {
+  if(num >= 10000) {
+    num = (num/10000).toFixed(1) + 'k';
+  }
+  return num;
+}
+
+module.exports = util

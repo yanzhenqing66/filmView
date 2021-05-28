@@ -1,15 +1,14 @@
 .content-bg {
-  margin-top: 10px;
-  padding-top: 5px;
+  margin-top: 10rpx;
+  padding: 10rpx;
   border-top:2rpx #dadada solid;
   background-color: #eef0f0;
 }
 
 .content {
-  margin-left: 10rpx;
   clear: both;
   overflow: hidden;
-  width: 725rpx;
+  width: 100%;
 }
 
 .content .left,
@@ -28,7 +27,7 @@
 .item {
   display: inline-block;
   background: #fff;
-  margin-bottom: 10rpx;
+  margin-bottom: 15rpx;
   border-radius: 20rpx;
   box-shadow:0px 0px 10rpx 10rpx #eef0ed;
   border: 1px #eef0ed solid;
@@ -37,12 +36,13 @@
 
 .item-img {
   width: 100%;
-  border-radius: 10rpx 15rpx 0 0;
+  border-radius: 15rpx 15rpx 0 0;
 }
 
 .item-title {
   margin-left: 10rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
+  line-height: 2;
   font-family: 'PingFang SC-Medium';
   /*只显示2行  */
   overflow: hidden;
@@ -54,8 +54,8 @@
 
 .description {
   margin: 10rpx 5rpx 10rpx 10rpx;
-  font-size: 12px;
-  color: gray;
+  font-size: 26rpx;
+  color: #666;
   /*只显示三行  */
   overflow: hidden;
   text-overflow: ellipsis;
@@ -64,31 +64,31 @@
   -webkit-box-orient: vertical;
 }
 
-.author-view {
-  padding: 10rpx;
+.info-view {
+  padding: 15rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .heart {
   display: flex;
   align-items: center;
 }
 
-.avatar {
+.likes {
   width: 40rpx;
   height: 40rpx;
 }
 
-.author-name {
+.likes_num {
   font-size: 26rpx;
   font-family: 'PingFang SC-Medium';
-  color: rgb(58, 57, 57);
+  color: #666;
 }
 
 .time {
-  font-size: 20rpx;
+  font-size: 25rpx;
   font-family: 'PingFang SC-Medium';
-  color: gray;
-  display: block;
+  color: #888;
 }

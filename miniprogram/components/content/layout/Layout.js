@@ -1,8 +1,4 @@
-// components/content/layout/Layout.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     'filmsInfo': {
       type: Array,
@@ -14,24 +10,15 @@ Component({
     }
   },
 
-  /**
-   * 组件的初始数据
-   */
-  data: {
-    
-  },
-
-  /**
-   * 组件的方法列表
-   */
   methods: {
     handleHeart(e) {
       let { id } = e.currentTarget.dataset
-      this.triggerEvent('heartUpd', { id }, {})
+      this.triggerEvent('heartUpd', { id })
     },
-    handleDetail(e) {
+
+    goDetail(e) {
       let { id } = e.currentTarget.dataset
-      this.triggerEvent('enterDetail', {id}, {})
+      this.triggerEvent('goDetail', { id })
     }
   }
 })
