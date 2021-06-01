@@ -1,5 +1,4 @@
-const app = getApp();
-const db = wx.cloud.database();
+import {getUser} from '../../api/profile'
 
 Page({
 
@@ -9,8 +8,7 @@ Page({
   data: {
     userPhoto: "/images/tabbar/profile.png",
     userName: "",
-    signature: "",
-    logged: false,
+    signature: '',
     disabled: true
   },
 
@@ -18,43 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    // wx.cloud.callFunction({
-    //   name: 'login',
-    //   data: {}
-    // }).then(res => {
-    //   db.collection('users').where({
-    //     _openid: res.result.openid
-    //   }).get().then(res => {    
-    //     if (res.data.length) {
-    //       app.userInfo = Object.assign(app.userInfo, res.data[0]);
-    //       this.setData({
-    //         userPhoto: app.userInfo.userPhoto,
-    //         userName: app.userInfo.userName,
-    //         signature: app.userInfo.signature,
-    //         logged: true
-    //       })
-    //     } else {
-    //       this.setData({
-    //         disabled: false
-    //       })
-    //     }
-    //   })
-    // })
-  },
-
-  onShow: function () {
-    this.setData({
-      userName: app.userInfo.userName,
-      userPhoto: app.userInfo.userPhoto,
-      signature: app.userInfo.signature
-    })
+    this.initUser()
   },
 
   /**
@@ -64,37 +26,45 @@ Page({
 
   },
 
+  initUser() {
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {}
+    }).then(res => {
+      this.getUser({openid: res.result.userInfo.openId})
+    })
+  },
+
   login() {
     wx.getUserProfile({
       desc: '用于完善会员资料',
       success: res => {
-        console.log(res);
+        wx.cloud.callFunction({
+          name: 'login',
+          data: {...res.userInfo, time: Date.now()}
+        }).then(res => {
+          this.getUser({_id: res.result._id})
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          title: '授权登录失败',
+          icon: 'error'
+        })
       }
     })
-    if (!this.data.logged && userInfo) {
-      db.collection('users').add({
-        data: {
-          userPhoto: userInfo.avatarUrl,
-          userName: userInfo.nickName,
-          gender: userInfo.gender,
-          signature: '',
-          weixinNum: '',
-          heartNum: '',
-          time: new Date()
-        }
-      }).then(res => {
-        console.log(res);
-        
-        db.collection('users').doc(res._id).get().then(res => {
-          app.userInfo = Object.assign(app.userInfo, res.data);
-          this.setData({
-            userPhoto: app.userInfo.userPhoto,
-            userName: app.userInfo.userName,
-            logged: true
-          })
-        })
-      })
-    }
   },
+
+  getUser(trem={}) {
+    getUser(trem)
+      .then(res => {
+        if(res.data.length>0) {
+          this.setData({
+            userPhoto: res.data[0].avatarUrl,
+            userName: res.data[0].nickName,
+          })
+        }
+      })
+  }
 
 })

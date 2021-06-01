@@ -1,11 +1,10 @@
 {
   "pages": [
-    "pages/profile/profile",
-    "pages/publish/publish",
     "pages/home/home",
     "pages/home/detail/detail",
+    "pages/publish/publish",
     "pages/tour/tour",
-    
+    "pages/profile/profile",
     "pages/profile/childpages/person/person",
     "pages/profile/childpages/edituser/editUserInfo",
     "pages/profile/childpages/edituser/childedit/head/head",
