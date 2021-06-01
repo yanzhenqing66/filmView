@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/profile/profile",
+    "pages/publish/publish",
     "pages/home/home",
     "pages/home/detail/detail",
     "pages/tour/tour",
-    "pages/like/like",
-    "pages/profile/profile",
+    
     "pages/profile/childpages/person/person",
     "pages/profile/childpages/edituser/editUserInfo",
     "pages/profile/childpages/edituser/childedit/head/head",
@@ -18,7 +19,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2E963D",
     "navigationBarTitleText": "简影视界",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white" 
   },
   "tabBar": {
     "list": [
@@ -29,16 +30,16 @@
         "text": "电影"
       },
       {
+        "iconPath": "./images/tabbar/publish.png",
+        "selectedIconPath": "./images/tabbar/publishS.png",
+        "pagePath": "pages/publish/publish",
+        "text": "发布"
+      },
+      {
         "iconPath": "./images/tabbar/world.png",
         "selectedIconPath": "./images/tabbar/worldc.png",
         "pagePath": "pages/tour/tour",
         "text": "视界"
-      },
-      {
-        "iconPath": "./images/tabbar/like.png",
-        "selectedIconPath": "./images/tabbar/likec.png",
-        "pagePath": "pages/like/like",
-        "text": "喜欢"
       },
       {
         "iconPath": "./images/tabbar/profile.png",

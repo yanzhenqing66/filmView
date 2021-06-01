@@ -1,12 +1,12 @@
 <view class="user">
 
 	<view class="user-info">
-		<image class="info-photo" mode="widthFix" src="{{userPhoto}}"></image>
+		<!-- <image class="info-photo" mode="widthFix" src="{{userPhoto}}"></image>
 		<view wx:if="{{logged}}" class="info-item">
       <text class="info-name">{{userName}}</text>
       <text class="info-signature">个性签名：{{signature}}</text>
-    </view>
-		<button wx:else disabled="{{disabled}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+    </view> -->
+		<button bindtap="login">授权登录</button>
 	</view>
 
   <view wx:if="{{logged}}" class="user-list">

@@ -2,8 +2,10 @@ import {get, update} from './index'
 
 const db = wx.cloud.database()
 
-export const getFilms = current => {
+export const getFilms = (current, len) => {
   return db.collection('films_topic')
+    .skip(len)
+    .limit(2)
     .orderBy(current, 'desc')
     .get()
 }

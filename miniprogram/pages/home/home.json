@@ -1,8 +1,10 @@
 {
   "usingComponents": {
     "Swiper": "../../components/content/swiper/Swiper",
-    "Footer": "../../components/common/footer/Footer",
     "Layout": "../../components/content/layout/Layout",
-    "back-top": "../../components/common/backtop/back-top"
-  }
+    "back-top": "../../components/common/backtop/back-top",
+    "Loading": "../../components/common/loading/loading"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#ddd"
 }

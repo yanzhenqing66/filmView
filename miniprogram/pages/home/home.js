@@ -7,13 +7,14 @@ import {
 const db = wx.cloud.database()
 const _ = db.command
 Page({
-
   data: {
     banner: [],
     filmsInfo: [],
     showBacktop: false,
     userInfo: [],
-    current: 'time'
+    current: 'time',
+    showFoot: true,
+    filmLen: 1
   },
 
   getSwipers() {
@@ -29,6 +30,7 @@ Page({
     if (current == this.data.current) {
       return false
     }
+    this.data.filmsInfo = []
     this.setData({
       current
     }, () => {
@@ -37,32 +39,40 @@ Page({
   },
 
   getFilms() {
-    getFilms(this.data.current)
+    if(this.data.filmLen <= 0) return
+    const len = this.data.filmsInfo.length
+    this.selectComponent("#loading").showLoad()
+    getFilms(this.data.current, len)
       .then(res => {
+        this.selectComponent("#loading").hideLoad()
+        if(res.data.length <= 0)  {
+          this.data.filmLen = 0
+        }
         this.setData({
-          filmsInfo: res.data
+          filmsInfo: this.data.filmsInfo.concat(res.data)
         })
       })
   },
 
   // 获取首页点击喜欢 更新 数据
   heartUpd(event) {
-    let id = event.detail.id
-    const data = {
-      heart_num: _.inc(1)
-    }
-    uptHeartNum({
-      _id: id
-    }, data).then(res => {
-      const cloneflimsInfo = [...this.data.filmsInfo]
-      for (let i = 0; i < cloneflimsInfo.length; i++) {
-        if (cloneflimsInfo[i]._id === id) {
-          cloneflimsInfo[i].heart_num++
+    const id = event.detail.id
+    const data = {}
+    this.data.filmsInfo.forEach(film => {
+      if(film._id === id) {
+        if(!film.heart_flag) {
+          data.heart_num = _.inc(1)
+          data.heart_flag = true
+        }else {
+          data.heart_num = _.inc(-1)
+          data.heart_flag = false
         }
       }
-      this.setData({
-        filmsInfo: cloneflimsInfo
-      })
+    })
+    uptHeartNum({
+      _id: id
+    }, data).then(() => {
+      this.getFilms()
     })
   },
 
@@ -70,18 +80,6 @@ Page({
     let id = event.detail.id
     wx.navigateTo({
       url: 'detail/detail?filmId=' + id,
-    })
-  },
-
-  // 获取用户信息
-  getUsers() {
-    db.collection('users').field({
-      userName: true,
-      userPhoto: true
-    }).get().then(res => {
-      this.setData({
-        userInfo: res.data
-      })
     })
   },
 
@@ -108,45 +106,18 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: async function () {
+    await this.getFilms()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getFilms()
   },
 
   /**

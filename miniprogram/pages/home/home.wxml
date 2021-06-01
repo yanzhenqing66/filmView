@@ -6,12 +6,12 @@
 </view>
 
 <view class="index-tab" bindtap="handleCurrent">
-	<view class="{{ current == 'time' ? 'active' : '' }} act" data-current="time">最新</view>
-	<view class="{{ current == 'heart_num' ? 'active' : '' }} act" data-current="heart_num">推荐</view>
+	<view class="{{ current === 'time' ? 'active' : '' }} act" data-current="time">最新</view>
+	<view class="{{ current === 'heart_num' ? 'active' : '' }} act" data-current="heart_num">推荐</view>
 </view>
 
 <Layout filmsInfo="{{filmsInfo}}" bind:heartUpd = "heartUpd" bind:goDetail="goDetail" />
 
-<Footer />
+<Loading id="loading"></Loading>
 
 <back-top wx:if="{{showBacktop}}" />

@@ -1,0 +1,8 @@
+<view class="spinner" wx:if="{{loading}}">
+  <view class="rect1"></view>
+  <view class="rect2"></view>
+  <view class="rect3"></view>
+  <view class="rect4"></view>
+  <view class="rect5"></view>
+</view>
+<view class="footer" wx:else>小简也是有底线的o(￣ヘ￣o＃)</view>

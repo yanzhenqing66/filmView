@@ -31,7 +31,10 @@
     </view>
     <view class="info-view">
       <view class="heart" data-id="{{_id}}" bindtap="handleHeart" >
-        <image class="likes" src="/images/home/like.svg"></image>
+        <image 
+          class="likes "
+          src="{{!heart_flag ? '../../../images/home/like.svg' : '../../../images/home/like-fill.svg'}}"
+          ></image>
         <text class="likes_num">{{util.formatNum(heart_num)}}</text>
       </view>
       <text class="time">{{time}}</text>

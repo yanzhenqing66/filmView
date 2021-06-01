@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "Layout": "../../components/content/layout/Layout"
+  }
+}

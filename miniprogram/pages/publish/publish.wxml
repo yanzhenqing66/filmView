@@ -1,0 +1,9 @@
+<view class="publish">
+  <view class="hotTitle">
+    <view class="hotCon">我的作品</view>
+  </view>
+
+  <view class="section">
+    <Layout filmsInfo="{{filmsInfo}}" />
+  </view>
+</view>

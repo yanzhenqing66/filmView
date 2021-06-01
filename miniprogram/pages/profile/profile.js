@@ -25,28 +25,28 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {}
-    }).then(res => {
-      db.collection('users').where({
-        _openid: res.result.openid
-      }).get().then(res => {    
-        if (res.data.length) {
-          app.userInfo = Object.assign(app.userInfo, res.data[0]);
-          this.setData({
-            userPhoto: app.userInfo.userPhoto,
-            userName: app.userInfo.userName,
-            signature: app.userInfo.signature,
-            logged: true
-          })
-        } else {
-          this.setData({
-            disabled: false
-          })
-        }
-      })
-    })
+    // wx.cloud.callFunction({
+    //   name: 'login',
+    //   data: {}
+    // }).then(res => {
+    //   db.collection('users').where({
+    //     _openid: res.result.openid
+    //   }).get().then(res => {    
+    //     if (res.data.length) {
+    //       app.userInfo = Object.assign(app.userInfo, res.data[0]);
+    //       this.setData({
+    //         userPhoto: app.userInfo.userPhoto,
+    //         userName: app.userInfo.userName,
+    //         signature: app.userInfo.signature,
+    //         logged: true
+    //       })
+    //     } else {
+    //       this.setData({
+    //         disabled: false
+    //       })
+    //     }
+    //   })
+    // })
   },
 
   onShow: function () {
@@ -64,8 +64,13 @@ Page({
 
   },
 
-  bindGetUserInfo(e) {
-    let userInfo = e.detail.userInfo;
+  login() {
+    wx.getUserProfile({
+      desc: '用于完善会员资料',
+      success: res => {
+        console.log(res);
+      }
+    })
     if (!this.data.logged && userInfo) {
       db.collection('users').add({
         data: {
