@@ -1,6 +1,5 @@
 import {
   getFilms,
-  getSwipers,
   uptHeartNum
 } from '../../api/home'
 
@@ -8,21 +7,12 @@ const db = wx.cloud.database()
 const _ = db.command
 Page({
   data: {
-    banner: [],
     filmsInfo: [],
     showBacktop: false,
     userInfo: [],
     current: 'time',
     showFoot: true,
     filmLen: 1
-  },
-
-  getSwipers() {
-    getSwipers().then(res => {
-      this.setData({
-        banner: res.data
-      })
-    })
   },
 
   handleCurrent(e) {
@@ -87,8 +77,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getSwipers();
-    this.getFilms();
+    this.getFilms()
   },
 
   /**

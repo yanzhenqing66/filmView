@@ -9,7 +9,12 @@ export const getFilms = (current, len) => {
     .get()
 }
 
-export const getSwipers = () => get('lunbo')
+export const getSwipers = () => {
+  return db.collection('films_topic')
+    .orderBy('time', 'desc')
+    .limit(3)
+    .get()
+}
 
 export const uptHeartNum = (searchParam, data) => 
   update('films_topic', searchParam, data)

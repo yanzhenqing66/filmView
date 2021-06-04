@@ -1,10 +1,6 @@
 import {getUser} from '../../api/profile'
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     userPhoto: "/images/tabbar/profile.png",
     userName: "",
@@ -12,16 +8,10 @@ Page({
     disabled: true
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.initUser()
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   },
@@ -46,7 +36,7 @@ Page({
           this.getUser({_id: res.result._id})
         })
       },
-      fail: err => {
+      fail: () => {
         wx.showToast({
           title: '授权登录失败',
           icon: 'error'
@@ -70,6 +60,7 @@ Page({
           }
 
           wx.setStorageSync('user', user)
+          wx.setStorageSync('openid', res.data[0].openid)
         }
       })
   }
