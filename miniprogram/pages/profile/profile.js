@@ -63,6 +63,13 @@ Page({
             userPhoto: res.data[0].avatarUrl,
             userName: res.data[0].nickName,
           })
+
+          const user = {
+            userPhoto: res.data[0].avatarUrl,
+            userName: res.data[0].nickName,
+          }
+
+          wx.setStorageSync('user', user)
         }
       })
   }

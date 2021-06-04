@@ -3,6 +3,7 @@
     "pages/home/home",
     "pages/home/detail/detail",
     "pages/publish/publish",
+    "pages/publish/upfile/upfile",
     "pages/tour/tour",
     "pages/profile/profile",
     "pages/profile/childpages/person/person",
@@ -49,5 +50,8 @@
     ]
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

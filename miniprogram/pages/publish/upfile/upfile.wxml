@@ -1,0 +1,55 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <Title>发布作品</Title>
+  <view class="page__bd">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+      <mp-cells>
+        <mp-cell show-error prop="film_name" title="电影名" ext-class="weui-cells__title">
+          <input bindinput="formInputChange" data-field="film_name" class="weui-input" placeholder="请输入电影名" />
+        </mp-cell>
+        <mp-cell show-error prop="title" title="标题" ext-class="weui-cells__title">
+          <input bindinput="formInputChange" data-field="title" class="weui-input" placeholder="请输入标题（不得超过50字）"
+            maxlength="50" />
+        </mp-cell>
+      </mp-cells>
+    </mp-form>
+
+    <mp-cells>
+      <mp-cell>
+        <mp-uploader 
+          bindfail="uploadError" 
+          bindsuccess="uploadSuccess" 
+          upload="{{uplaodFile}}" 
+          files="{{files}}"
+          title="封面" 
+          max-count="1"></mp-uploader>
+      </mp-cell>
+    </mp-cells>
+
+    <view class="weui-cells__title">简介</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请写下电影简介吧..." style="height: 5em" maxlength="1000"
+            placeholder-class="placeCls" bindinput="formInputChange" data-field="content" />
+          <view class="weui-textarea-counter">{{contLen}}/1000</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">感受</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请写下观影感受吧..." style="height: 5em" maxlength="1000"
+            placeholder-class="placeCls" bindinput="formInputChange" data-field="hot_comment" />
+          <view class="weui-textarea-counter">{{hotLen}}/1000</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    </view>
+  </view>
+</view>

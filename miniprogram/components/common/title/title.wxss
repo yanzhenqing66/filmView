@@ -23,21 +23,3 @@
   top: 58rpx;
   left: 10rpx;
 }
-
-
-
-.upFile {
-  width: 100rpx;
-  height: 100rpx;
-  border: 3px solid #7ac986;
-  border-radius: 50%;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 50rpx;
-}
-
-.upIcon {
-  width: 100%;
-  height: 100%;
-}

@@ -57,6 +57,12 @@
           "pathName": "pages/publish/publish",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/publish/upfile/upfile",
+          "pathName": "pages/publish/upfile/upfile",
+          "query": "",
+          "scene": null
         }
       ]
     }

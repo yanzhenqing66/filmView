@@ -1,0 +1,8 @@
+.placeCls {
+  font-size: 28rpx;
+}
+
+.weui-uploader__title {
+  color: #888;
+  font-size: 28rpx;
+}

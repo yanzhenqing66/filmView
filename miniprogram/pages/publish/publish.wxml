@@ -6,4 +6,8 @@
   <view class="section">
     <Layout filmsInfo="{{filmsInfo}}" />
   </view>
+
+  <view class="upFile" bindtap="goUpfile">
+    <image class="upIcon" src="../../images/publish/up.svg"></image>
+  </view>
 </view>

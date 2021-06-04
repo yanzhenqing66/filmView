@@ -1,0 +1,3 @@
+<view class="hotTitle">
+    <view class="hotCon"><slot></slot></view>
+</view>
