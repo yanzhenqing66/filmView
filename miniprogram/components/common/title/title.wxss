@@ -1,7 +1,7 @@
 .hotTitle {
   position: relative;
   background-color: #eef0f0;
-  background: url(http://nsedu.oss-cn-beijing.aliyuncs.com/nsedu-m/2020-index/title-bg.png) no-repeat 30rpx center;
+  background: url(https://6669-file-vlog-ubfu7-1302212388.tcb.qcloud.la/bg/title-bg.png?sign=2d19aaedf87197e41b389b424bb9023c&t=1622799816) no-repeat 30rpx center;
   background-size: contain;
 }
 

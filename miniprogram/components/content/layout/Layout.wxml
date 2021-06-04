@@ -30,6 +30,12 @@
       <text class='description'>{{title}}</text>
     </view>
     <view class="info-view">
+      <view class="author">
+        <image 
+          class="avator"
+          src="{{userAvatar ? userAvatar : '../../../images/avatar.svg'}}"></image>
+        <text class="username">{{userName}}</text>
+      </view>
       <view class="heart" data-id="{{_id}}" bindtap="handleHeart" >
         <image 
           class="likes "
@@ -37,7 +43,6 @@
           ></image>
         <text class="likes_num">{{util.formatNum(heart_num)}}</text>
       </view>
-      <text class="time">{{time}}</text>
     </view>
   </view>
 </template>

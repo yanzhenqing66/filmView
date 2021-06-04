@@ -58,7 +58,7 @@ Page({
           })
 
           const user = {
-            userPhoto: res.data[0].avatarUrl,
+            userAvatar: res.data[0].avatarUrl,
             userName: res.data[0].nickName,
           }
 

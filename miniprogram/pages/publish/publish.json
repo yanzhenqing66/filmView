@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "Layout": "../../components/content/layout/Layout"
+    "Layout": "../../components/content/layout/Layout",
+    "Title": "../../components/common/title/title"
   }
 }

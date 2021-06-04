@@ -3,7 +3,8 @@
     "Swiper": "../../components/content/swiper/Swiper",
     "Layout": "../../components/content/layout/Layout",
     "back-top": "../../components/common/backtop/back-top",
-    "Loading": "../../components/common/loading/loading"
+    "Loading": "../../components/common/loading/loading",
+    "Title": "../../components/common/title/title"
   },
   "enablePullDownRefresh": true,
   "backgroundColor": "#ddd"

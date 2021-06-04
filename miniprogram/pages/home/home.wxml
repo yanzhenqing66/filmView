@@ -1,9 +1,7 @@
 
 <Swiper class="conSwiper"></Swiper>
 
-<view class="hotTitle">
-	<view class="hotCon">热门推荐</view>
-</view>
+<Title>热门推荐</Title>
 
 <view class="index-tab" bindtap="handleCurrent">
 	<view class="{{ current === 'time' ? 'active' : '' }} act" data-current="time">最新</view>
