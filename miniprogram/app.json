@@ -4,7 +4,6 @@
     "pages/home/detail/detail",
     "pages/publish/publish",
     "pages/publish/upfile/upfile",
-    "pages/tour/tour",
     "pages/profile/profile",
     "pages/profile/childpages/person/person",
     "pages/profile/childpages/edituser/editUserInfo",
@@ -34,12 +33,6 @@
         "selectedIconPath": "./images/tabbar/publishS.png",
         "pagePath": "pages/publish/publish",
         "text": "发布"
-      },
-      {
-        "iconPath": "./images/tabbar/world.png",
-        "selectedIconPath": "./images/tabbar/worldc.png",
-        "pagePath": "pages/tour/tour",
-        "text": "视界"
       },
       {
         "iconPath": "./images/tabbar/profile.png",
