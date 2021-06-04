@@ -5,7 +5,6 @@ Page({
     userPhoto: "/images/tabbar/profile.png",
     userName: "",
     signature: '',
-    disabled: true
   },
 
   onLoad: function (options) {
@@ -17,11 +16,15 @@ Page({
   },
 
   initUser() {
+    wx.showLoading({
+      title: 'loading...',
+    })
     wx.cloud.callFunction({
       name: 'login',
       data: {}
     }).then(res => {
       this.getUser({openid: res.result.userInfo.openId})
+      wx.hideLoading()
     })
   },
 
