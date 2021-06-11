@@ -2,6 +2,8 @@ import {get, update} from './index'
 
 const db = wx.cloud.database()
 
+const _ = db.command
+
 export const getFilms = (current, len) => {
   return db.collection('films_topic')
     .skip(len)
@@ -16,7 +18,6 @@ export const getSwipers = () => {
     .get()
 }
 
-export const uptHeartNum = (searchParam, data) => 
-  update('films_topic', searchParam, data)
-
 export const getFilmDetail = param => get('films_topic', param)
+
+export const getUserInfo = param => get('users', param)

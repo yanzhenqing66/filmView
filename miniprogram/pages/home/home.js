@@ -1,15 +1,15 @@
 import {
   getFilms,
-  uptHeartNum
+  getUserInfo
 } from '../../api/home'
 
 const db = wx.cloud.database()
 const _ = db.command
 Page({
   data: {
+    openid: '',
     filmsInfo: [],
     showBacktop: false,
-    userInfo: [],
     current: 'time',
     showFoot: true,
     filmLen: 1
@@ -41,28 +41,96 @@ Page({
         this.setData({
           filmsInfo: this.data.filmsInfo.concat(res.data)
         })
+
+        this.getUserInfo()
+        console.log(this.data.filmsInfo);
       })
   },
 
   // 获取首页点击喜欢 更新 数据
   heartUpd(event) {
     const id = event.detail.id
+    if(!this.data.openid) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'error'
+      })
+      return
+    }
     const data = {}
     this.data.filmsInfo.forEach(film => {
       if(film._id === id) {
-        if(!film.heart_flag) {
-          data.heart_num = _.inc(1)
-          data.heart_flag = true
+        if(!film.like_flag) {
+          data.heart_num = 1
         }else {
-          data.heart_num = _.inc(-1)
-          data.heart_flag = false
+          data.heart_num = -1
         }
       }
     })
-    uptHeartNum({
-      _id: id
-    }, data).then(() => {
-      this.getFilms()
+    wx.cloud.callFunction({
+      name: 'uptHeartNum',
+      data: {
+        id,
+        heart_num: `{heart_num: _.inc(${data.heart_num})}`
+      }
+    }).then(res => {
+      const updated = res.result.stats.updated
+      if(updated) {
+        const cloneFilms = [...this.data.filmsInfo]
+        cloneFilms.forEach(item => {
+          if(!item.heart_flag) {
+            if(item._id === id) {
+              item.like_flag = true
+              item.heart_num++ 
+              this.updUserLike(this.data.openid, id, 'add')
+            }
+          }else {
+            if(item._id === id) {
+              item.like_flag = false
+              item.heart_num-- 
+              this.updUserLike(this.data.openid, id, 'sub')
+            }
+          }
+        })
+        this.setData({
+          filmsInfo: cloneFilms
+        })
+      }
+    })
+  },
+
+  updUserLike(openid ,id, type) {
+    wx.cloud.callFunction({
+      name: 'updUserLike',
+      data: {
+        openid,
+        id,
+        type
+      }
+    })
+  },
+
+  getUserInfo() {
+    if(!this.data.openid) {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'error'
+      })
+      return
+    }
+    getUserInfo({
+      openid: this.data.openid
+    }).then(res => {
+      res.data[0].likes.forEach(like => {
+        this.data.filmsInfo.forEach(film => {
+          if(like === film._id) {
+            film.like_flag = true
+          }else {
+            film.like_flag = false
+          }
+        })
+        console.log(this.data.filmsInfo);
+      })
     })
   },
 
@@ -77,6 +145,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const openid = wx.getStorageSync('openid')
+    this.setData({
+      openid
+    })
     this.getFilms()
   },
 
@@ -97,8 +169,9 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: async function () {
-    await this.getFilms()
+  onPullDownRefresh: function () {
+    this.getFilms()
+    this.getUserInfo()
     wx.stopPullDownRefresh()
   },
 
@@ -107,6 +180,7 @@ Page({
    */
   onReachBottom: function () {
     this.getFilms()
+    this.getUserInfo()
   },
 
   /**

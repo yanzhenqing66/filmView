@@ -17,7 +17,7 @@ Page({
 
   initUser() {
     wx.showLoading({
-      title: 'loading...',
+      title: '加载中...',
     })
     wx.cloud.callFunction({
       name: 'login',
